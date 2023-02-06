@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+<div>
+    <a href="/">HOME</a> <a href="/productos/mostrar">PRODUCTOS</a>  <a href="/productos/contact">CONTACTO</a>
+</div>
+<br>
+<div class="container">
+    <form th:object="${tenga}" th:action="@{/productos/agregar}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input th:field="*{name}" id="name" placeholder="Name of the product" type="text"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input th:field="*{descripcion}" id="descripcion" placeholder="Descripcion del tenga" type="text"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input th:field="*{price}" id="price" placeholder="Price of the product" type="number" step="any"
+                   class="form-control">
+        </div>
+        <button class="btn btn-success" type="submit">Save</button>
+        &nbsp;<a class="btn btn-warning" th:href="@{/productos/mostrar}">See all</a>
+    </form>
+</div>
+</body>
+</html>

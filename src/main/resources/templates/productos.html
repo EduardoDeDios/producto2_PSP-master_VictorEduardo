@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change the link color to #111 (black) on hover */
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <a href="/">HOME</a> <a href="/productos/mostrar">PRODUCTOS</a> <a href="/productos/contact">CONTACTO</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th> Id</th>
+        <th> Name</th>
+        <th> Descripcion</th>
+        <th> Price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="tenga : ${productos}">
+        <td><span th:text="${tenga.id}"></span></td>
+        <td><span th:text="${tenga.name}"></span></td>
+        <td><span th:text="${tenga.descripcion}"></span></td>
+        <td><span th:text="${tenga.price}"></span><span> €</span></td>
+        <td>
+            <a th:href="@{/productos/editar/{id}(id = ${tenga.id})}" class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/productos/eliminar/{id}(id = ${tenga.id})}" class="btn btn-warning">Delete</a>
+
+        </td>
+
+    </tr>
+
+
+    </tbody>
+</table>
+<a th:href="@{/productos/agregar}" class="btn btn-warning">Agregar</a>
+</body>
+</html>
